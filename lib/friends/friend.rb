@@ -11,7 +11,11 @@ module Friends
 
     # @return [Regexp] the regex for capturing groups in deserialization
     def self.deserialization_regex
-      /(#{SERIALIZATION_PREFIX})?(?<name>[^\(]+)(\((?<nickname_str>#{NICKNAME_PREFIX}.+)\))?/
+      %r{
+        (#{SERIALIZATION_PREFIX})?
+        (?<name>[^\(]+)
+        (\((?<nickname_str>#{NICKNAME_PREFIX}.+)\))?
+      }x
     end
 
     # @return [Regexp] the string of what we expected during deserialization
